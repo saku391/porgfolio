@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+/* 共通部分
+---------------------------------- */
+html {
+  font-size: 100%;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Playfair Display", serif;
+  line-height: 1.7;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+img {
+  max-width: 100%;
+}
+
+/* HEADER
+--------------------------------- */
+.logo {
+  width: 210px;
+}
+
+.main-nav {
+  display: flex;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  margin-top: 34px;
+  list-style-type: none;
+}
+
+.main-nav li {
+  margin-left: 36px;
+}
+
+.main-nav a {
+  color: #fff;
+}
+
+.main-nav a:hover {
+  color: #0bd;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/* HOME
+--------------------------------------------------- */
+.home-content {
+  text-align: center;
+  margin-top: 10%;
+  animation-name: fadeInAnime; 
+  animation-fill-mode: backwards; 
+  animation-duration: 3s; 
+  animation-timing-function: ease; 
+  animation-delay: 0.5s; 
+  animation-direction: normal; 
+}
+
+@keyframes fadeInAnime {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.home-content p {
+  font-size: 1.125rem;
+  margin: 10px 0 42px;
+}
+
+/* 見出し */
+.page-title {
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+/* 中央ボタン */
+.button {
+  font-size: 1.375rem;
+  background: #b5d0d0;
+  border-radius: 5px;
+  padding: 18px 32px;
+}
+.button:hover {
+  background: #1e2324;
+}
+
+/* ハンバーガーメニュー */
+.hamburger-btn {
+  position: relative; /* buttonタグを起点にしてspanタグの位置を決める */
+  width: 40px;
+  height: 30px;
+  display: none;
+  transition: all 0.4s; /* アニメーション速度 */
+  border: none; /* buttonタグの装飾を消去 */
+  outline: none; /* buttonタグの装飾を消去 */
+  background: transparent; /* buttonタグの装飾を消去 */
+}
+
+.hamburger-btn span {
+  /* すべての線に共通のスタイル */
+  display: inline-block;
+  transition: all 0.4s; /* アニメーション速度 */
+  position: absolute; /* buttonタグから見た位置 */
+  left: 0; /* buttonタグの左端に寄せる */
+  width: 100%; /* 横幅をbuttonタグいっぱいに広げる(40px) */
+  height: 2px; /* 線の太さ */
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.hamburger-btn span:nth-of-type(1) {
+  /* 一番上の線の位置 */
+  top: 0;
+}
+.hamburger-btn span:nth-of-type(2) {
+  /* 真ん中の線の位置 */
+  top: 15px;
+}
+.hamburger-btn span:nth-of-type(3) {
+  /* 一番下の線の位置 */
+  bottom: 0;
+}
+
+/* レスポンシブ化 */
+@media screen and (max-width: 767px) {
+  .hamburger-btn {
+    display: block; /* ハンバーガーメニューを表示 */
+  }
+  .hamburger-btn.active span:nth-of-type(1) {
+    -webkit-transform: translateY(14px) rotate(-45deg);
+    transform: translateY(14px) rotate(-45deg);
+  }
+  .hamburger-btn.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.active span:nth-of-type(3) {
+    -webkit-transform: translateY(-14px) rotate(45deg);
+    transform: translateY(-14px) rotate(45deg);
+  }
+  .header-nav {
+    position: fixed; /* メニュー位置を固定 */
+    top: 50px; /* ヘッダーバーの厚さ分下に */
+    left: 0;
+    width: 100%; /* 画面幅いっぱいに */
+    transition: all 0.8s; /* アニメーション速度 */
+    transform: translateX(100%);
+  }
+  .header-nav.active {
+    transform: translateX(0);
+  }
+  .main-nav {
+    width: 100%; /* 画面幅いっぱいに */
+    display: block; /* メニュー一覧の横並びを解除して縦並びに */
+    height: calc(100vh - 50px); /* 高さを画面全体からヘッダー分ひいた大きさに */
+    background-color: #000000b8; /* わかりやすいように背景色 */
+  }
+  .main-nav li {
+    margin-right: 0; /* marginの初期化 */
+    border-bottom: solid 1px #333; /* メニュー幅がわかりやすいように境界線 */
+    width: 100%;
+    height: calc(
+      (100vh - 50px) / 4
+    ); /* メニューが4つあるので{（画面高さ) ー (ヘッダー高さ)} ÷ 4 */
+  }
+  .main-nav li a {
+    height: 100%; /* 高さをliタグいっぱいに広げる */
+    /* 以下の３つで文字の上下中央ぞろえ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* モバイル版 */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  /* HEADER */
+  .main-nav {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  .main-nav li {
+    margin: 0 20px;
+  }
+
+  /* HOME */
+  .home-content {
+    margin-top: 20%;
+  }
+}
+
+/* 大きな背景画像 */
+.big-bg {
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#home {
+  background-image: url(images/Bar.jpg);
+  min-height: 100vh;
+}
+#home .page-title {
+  text-transform: none;
+}
